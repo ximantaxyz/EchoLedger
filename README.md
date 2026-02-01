@@ -167,4 +167,3 @@ EchoLedger displays publicly available Instagram usernames only. No private data
 ---
 
 *EchoLedger by Ximanta – An open ledger of real followers*
-```
