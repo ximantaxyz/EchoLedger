@@ -1,4 +1,3 @@
-```markdown
 # EchoLedger
 
 A public, transparent follower ledger that visualizes Instagram followers as immutable entries sourced from a repository file.
@@ -21,7 +20,7 @@ A public, transparent follower ledger that visualizes Instagram followers as imm
 
 ## 📁 Folder Structure
 
-```
+
 echoledger/
 ├── index.html              # Main ledger page
 ├── removalreq.html         # Removal request page
@@ -38,7 +37,6 @@ echoledger/
         ├── OG.png         # Early supporter badge
         ├── SPC.png        # Special follower badge
         └── KF.png         # Known follower badge
-```
 
 ## 🚀 Quick Start
 
