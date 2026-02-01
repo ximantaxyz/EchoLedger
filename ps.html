@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EchoLedger — Platform Safety</title>
+<style>
+:root {
+  --bg: #0a0a0a;
+  --surface: #111;
+  --surface-lift: #1a1a1a;
+  --border: #222;
+  --text: #f0f0f0;
+  --text-secondary: #999;
+  --accent: #00e6ff;
+  --accent-glow: rgba(0, 230, 255, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --heading-glow: 0 0 15px rgba(0, 230, 255, 0.3);
+  --easing: cubic-bezier(0.4, 0, 0.2, 1);
+}
+.light-theme {
+  --bg: #f9f9f9;
+  --surface: #ffffff;
+  --surface-lift: #f0f0f0;
+  --border: #ddd;
+  --text: #1a1a1a;
+  --text-secondary: #666;
+  --accent: #ff4d8d;
+  --accent-glow: rgba(255, 77, 141, 0.1);
+  --heading-glow: none;
+  --easing: cubic-bezier(0.28, 0.44, 0.49, 1);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  transition: var(--transition);
+}
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 48px 0 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 40px;
+}
+.title-block h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 4px;
+  color: var(--accent);
+  text-shadow: var(--heading-glow);
+}
+.subtitle {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+}
+.header-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+.theme-switch {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 4px;
+  gap: 2px;
+}
+.theme-option {
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s var(--easing);
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+.theme-option.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+.pill-btn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pill-btn:hover {
+  background: var(--surface-lift);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.nav-row {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 48px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+.nav-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 8px 0;
+  position: relative;
+  transition: var(--transition);
+}
+.nav-link:hover {
+  color: var(--accent);
+}
+.nav-link.active {
+  color: var(--accent);
+}
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -17px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.content-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 28px;
+  transition: var(--transition);
+}
+.content-card:hover {
+  border-color: var(--accent);
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card-title::before {
+  content: '•';
+  font-size: 2rem;
+  color: var(--accent);
+}
+.card-text {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+.card-text:last-child {
+  margin-bottom: 0;
+}
+.list {
+  margin: 20px 0 20px 24px;
+}
+.list-item {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  padding-left: 12px;
+  position: relative;
+}
+.list-item::before {
+  content: '—';
+  position: absolute;
+  left: -12px;
+  color: var(--accent);
+}
+.note-box {
+  background: var(--surface-lift);
+  border-left: 4px solid var(--accent);
+  padding: 20px 24px;
+  margin: 24px 0;
+  border-radius: 8px;
+}
+.note-text {
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+footer {
+  border-top: 1px solid var(--border);
+  padding: 60px 0 40px;
+  margin-top: 80px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.footer-section h3 {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.footer-links a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+.footer-links a:hover {
+  color: var(--accent);
+}
+.email-btn {
+  display: inline-block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.email-btn:hover {
+  background: var(--surface-lift);
+  border-color: var(--accent);
+}
+.location {
+  display: inline-block;
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.location:hover {
+  border-color: var(--accent);
+}
+.counter {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.counter-label {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+.copyright {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding-top: 30px;
+  border-top: 1px solid var(--border);
+}
+</style>
+</head>
+<body class="dark-theme">
+<div class="container">
+<header>
+<div class="title-block">
+<h1>EchoLedger</h1>
+<div class="subtitle">Platform Safety</div>
+</div>
+<div class="header-controls">
+<div class="theme-switch">
+<button class="theme-option active" data-theme="dark">Dark</button>
+<button class="theme-option" data-theme="light">Light</button>
+</div>
+<button class="pill-btn" onclick="location.href='mailto:ximanta.official@gmail.com'">Contact</button>
+</div>
+</header>
+<div class="nav-row">
+<a href="index.html" class="nav-link">Home</a>
+<a href="removalreq.html" class="nav-link">Removal</a>
+<a href="dnp.html" class="nav-link">Privacy</a>
+<a href="ps.html" class="nav-link active">Safety</a>
+<a href="LICENSE" class="nav-link">License</a>
+</div>
+<div class="content-card">
+<h2 class="card-title">Respectful Use</h2>
+<p class="card-text">
+EchoLedger is a public, transparent project built to acknowledge followers. Respect for individuals—both listed and unlisted—is mandatory.
+</p>
+<p class="card-text">
+Harassment, threats, doxxing, abuse, or any form of harmful behavior directed at people in the ledger or its maintainers is strictly prohibited.
+</p>
+<div class="note-box">
+<p class="note-text">
+This project values human dignity above all. Use the ledger responsibly and with maturity.
+</p>
+</div>
+</div>
+<div class="content-card">
+<h2 class="card-title">No Misuse or Manipulation</h2>
+<p class="card-text">
+The ledger is read‑only and presented as a static archive. You may not:
+</p>
+<ul class="list">
+<li class="list-item">Scrape, crawl, or automate extraction of ledger data</li>
+<li class="list-item">Impersonate or misrepresent affiliation with EchoLedger</li>
+<li class="list-item">Alter, fake, forge, or attempt to manipulate records</li>
+<li class="list-item">Use ledger data for commercial, promotional, or spam purposes</li>
+<li class="list-item">Reverse‑engineer or attempt to exploit the project’s structure</li>
+</ul>
+<p class="card-text">
+The integrity of the ledger is protected; violations may result in access restrictions.
+</p>
+</div>
+<div class="content-card">
+<h2 class="card-title">Reporting Concerns</h2>
+<p class="card-text">
+If you believe content is incorrect, outdated, or presented in a harmful manner, please contact us. We review all reports manually and with care.
+</p>
+<p class="card-text">
+You may report:
+</p>
+<ul class="list">
+<li class="list-item">Inaccurate or unauthorized entries</li>
+<li class="list-item">Safety or harassment concerns</li>
+<li class="list-item">Technical vulnerabilities</li>
+<li class="list-item">Policy or moderation questions</li>
+</ul>
+<p class="card-text">
+Use the Contact button above or email directly at <strong>ximanta.official@gmail.com</strong>. We aim to respond within a reasonable timeframe.
+</p>
+</div>
+<div class="content-card">
+<h2 class="card-title">Community Expectations</h2>
+<p class="card-text">
+This project operates on principles of transparency, respect, and good faith. Users who engage with the ledger—whether viewing, sharing, or referencing it—are expected to act maturely and responsibly.
+</p>
+<p class="card-text">
+Bad‑faith behavior, deliberate disruption, or attempts to undermine the project’s purpose may result in permanent restrictions from accessing EchoLedger resources.
+</p>
+<div class="note-box">
+<p class="note-text">
+Our goal is to maintain a safe, stable, and trustworthy archive. Your cooperation is essential.
+</p>
+</div>
+</div>
+<div class="content-card">
+<h2 class="card-title">Changes & Enforcement</h2>
+<p class="card-text">
+These safety rules may evolve as the project grows or as new challenges emerge. Changes will be reflected on this page with clear communication.
+</p>
+<p class="card-text">
+Enforcement decisions are made at the sole discretion of the project maintainers, with the intent of protection—not punishment. All decisions are final.
+</p>
+<p class="card-text">
+By using EchoLedger, you agree to abide by these safety guidelines and acknowledge that violation may lead to access restrictions without prior notice.
+</p>
+</div>
+<footer>
+<div class="footer-grid">
+<div class="footer-section">
+<h3>Navigation</h3>
+<div class="footer-links">
+<a href="index.html">Home</a>
+<a href="removalreq.html">Removal</a>
+<a href="dnp.html">Privacy</a>
+<a href="ps.html">Safety</a>
+<a href="LICENSE.html">License</a>
+</div>
+</div>
+<div class="footer-section">
+<h3>Contact</h3>
+<button class="email-btn" onclick="location.href='mailto:ximanta.official@gmail.com'">Email</button>
+</div>
+<div class="footer-section">
+<h3>Location</h3>
+<div class="location" onclick="window.open('https://maps.google.com/?q=Kaziranga,Assam,India')">Kaziranga, Assam, India</div>
+</div>
+<div class="footer-section">
+<h3>Visits</h3>
+<div class="counter" id="visitCounter">0</div>
+<div class="counter-label">unique visits</div>
+</div>
+</div>
+<div class="copyright" id="copyright"></div>
+</footer>
+</div>
+<script>
+const themeButtons = document.querySelectorAll('.theme-option');
+function initTheme() {
+const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+const savedTheme = localStorage.getItem('theme');
+const theme = savedTheme || (prefersLight ? 'light' : 'dark');
+setTheme(theme);
+}
+function setTheme(theme) {
+document.body.classList.remove('dark-theme', 'light-theme');
+document.body.classList.add(theme + '-theme');
+themeButtons.forEach(btn => {
+btn.classList.toggle('active', btn.dataset.theme === theme);
+});
+localStorage.setItem('theme', theme);
+}
+themeButtons.forEach(btn => {
+btn.addEventListener('click', () => {
+setTheme(btn.dataset.theme);
+});
+});
+function updateCounter() {
+let c = localStorage.getItem('echo_visits');
+c = c ? parseInt(c) + 1 : 1;
+localStorage.setItem('echo_visits', c.toString());
+document.getElementById('visitCounter').textContent = c.toLocaleString();
+}
+function updateCopyright() {
+document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} Ximanta`;
+}
+initTheme();
+updateCounter();
+updateCopyright();
+</script>
+</body>
+</html>
