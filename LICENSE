@@ -1,0 +1,141 @@
+📄 LICENSE
+
+EchoLedger Source-Available License (ESAL-1.0)
+
+Copyright (c) 2026
+Ximanta Bhuyan
+
+
+---
+
+1. Ownership
+
+EchoLedger is created and owned by Ximanta Bhuyan.
+The project name, source code, visual identity, and all associated assets are protected under this license.
+
+All rights not expressly granted are reserved.
+
+
+---
+
+2. Attribution (Strict)
+
+Any use, distribution, modification, or deployment of EchoLedger must include clear and visible attribution.
+
+Required attribution text (must be exact):
+
+> EchoLedger by Ximanta
+
+
+
+Attribution must appear in:
+
+Source code
+
+Public user interfaces (if deployed)
+
+Documentation or accompanying materials
+
+
+Removing, obscuring, or altering attribution constitutes a license violation.
+
+
+---
+
+3. Permitted Use
+
+The following uses are permitted only if all license terms are respected:
+
+Personal, non-commercial use
+
+Educational or research purposes
+
+Non-profit or community projects
+
+Local forks for experimentation and learning
+
+
+
+---
+
+4. Prohibited Use
+
+The following are expressly prohibited:
+
+Commercial use of any kind
+
+Paid services, SaaS offerings, or monetized deployments
+
+Rebranding, white-labeling, or claiming authorship
+
+Removal or modification of attribution
+
+Automated mass scraping or dataset harvesting
+
+Malicious, abusive, harassing, or surveillance use
+
+Re-archiving or redistributing data that has been removed or is private
+
+
+
+---
+
+5. Modifications
+
+Modifications are allowed only if all of the following are met:
+
+The modified version is clearly identified as modified
+
+A link to the original EchoLedger source is provided
+
+Original attribution remains intact and unchanged
+
+The same license terms apply to the modified version
+
+
+
+---
+
+6. Deployment Conditions
+
+Public deployment (modified or unmodified) is permitted only if:
+
+Attribution is clearly visible in the public interface
+
+This license is retained in full
+
+The deployment is strictly non-commercial
+
+No attempt is made to hide or misrepresent the project’s origin
+
+
+
+---
+
+7. No Warranty
+
+EchoLedger is provided “AS IS”, without warranty of any kind, express or implied, including but not limited to merchantability, fitness for a particular purpose, or non-infringement.
+
+
+---
+
+8. Limitation of Liability
+
+In no event shall the author be liable for any claim, damages, or other liability arising from the use, misuse, or inability to use this software.
+
+
+---
+
+9. Enforcement
+
+Any violation of this license constitutes unauthorized use.
+The author reserves the right to enforce these terms at their discretion.
+
+The intent of this license is protection of authorship, ethical use, and user privacy — not punishment.
+
+
+---
+
+Acceptance
+
+By using, copying, modifying, or deploying EchoLedger, you agree to be bound by the terms of this license.
