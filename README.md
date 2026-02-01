@@ -130,13 +130,18 @@ See [LICENSE](LICENSE) for complete terms.
 
 ## 👨‍💻 Author
 
-**Ximanta Bhuyan**
-
-- Portfolio: [about.ximanta.space](https://about.ximanta.space)
-- Instagram: [@ximanta.xyz_](https://instagram.com/ximanta.xyz_)
-- Telegram: [@ximantaxyz](https://t.me/ximantaxyz)
-- X: [@ximantaxyz](https://x.com/ximantaxyz)
-- Email: ximanta.official@gmail.com
+<p align="center">
+  <img src="https://raw.githubusercontent.com/ximantaxyz/EchoLedger/main/assets/developer.jpg"
+       alt="Ximanta Bhuyan"
+       width="160"
+       style="border-radius:50%;" />
+</p>
+<p align="center">
+  <a href="https://instagram.com/ximanta.xyz_">Instagram</a> •
+  <a href="https://t.me/ximantaxyz">Telegram</a> •
+  <a href="https://about.ximanta.space">Portfolio</a>
+</p>
+<h3 align="center">Ximanta Bhuyan</h3>
 
 ## 🌐 Deployment
 
