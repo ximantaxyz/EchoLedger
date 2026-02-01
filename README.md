@@ -21,28 +21,29 @@ A public, transparent follower ledger that visualizes Instagram followers as imm
 ## 📁 Folder Structure
 
 
-echoledger/
+
+EchoLedger/
 ├── index.html              # Main ledger page
 ├── removalreq.html         # Removal request page
 ├── dnp.html                # Data & privacy policy
 ├── ps.html                 # Platform safety rules
-├── LICENSE                 # License & authorship page
+├── LICENSE                 # Source-available license
 ├── followers/
-│   └── index.txt          # Data source (username m/f OG/SPC/KF)
+│   └── index.txt           # Data source (username m/f OG/SPC/KF)
 └── assets/
     ├── avatar/
-    │   ├── m.png          # Male avatar
-    │   └── f.png          # Female avatar
+    │   ├── m.png           # Male avatar
+    │   └── f.png           # Female avatar
     └── badge/
-        ├── OG.png         # Early supporter badge
-        ├── SPC.png        # Special follower badge
-        └── KF.png         # Known follower badge
+        ├── OG.png          # Early supporter badge
+        ├── SPC.png         # Special follower badge
+        └── KF.png          # Known follower badge
 
 ## 🚀 Quick Start
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/ximantaxyz/echoledger.git
+   git clone https://github.com/ximantaxyz/EchoLedger.git
    cd echoledger
    ```
 
