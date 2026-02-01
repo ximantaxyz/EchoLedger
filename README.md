@@ -5,6 +5,8 @@ A public, transparent follower ledger that visualizes Instagram followers as imm
 [![License](https://img.shields.io/badge/License-ESAL--1.0-blue.svg)](LICENSE)
 [![Netlify](https://img.shields.io/badge/Deployed_on-Netlify-00C7B7.svg)](https://echo-ledger.netlify.app)
 
+___
+
 ## ✨ Features
 
 - **Public Ledger Interface** – Clean, card-based display of followers with avatars and badges
@@ -17,11 +19,12 @@ A public, transparent follower ledger that visualizes Instagram followers as imm
 - **Client-side Analytics** – Visit counter using localStorage (no external tracking)
 - **Responsive Design** – Works across desktop and mobile devices
 - **Source-Available License** – ESAL-1.0 with clear attribution requirements
+- 
+___
 
 ## 📁 Folder Structure
 
-
-
+```text
 EchoLedger/
 ├── index.html              # Main ledger page
 ├── removalreq.html         # Removal request page
@@ -38,6 +41,8 @@ EchoLedger/
         ├── OG.png          # Early supporter badge
         ├── SPC.png         # Special follower badge
         └── KF.png          # Known follower badge
+```
+___
 
 ## 🚀 Quick Start
 
@@ -75,6 +80,8 @@ alicewonder f OG SPC
 bobbuilder m KF
 charliech f OG KF
 ```
+
+___
 
 ## 🎨 Design System
 
@@ -129,6 +136,8 @@ EchoLedger is released under the **EchoLedger Source-Available License (ESAL-1.0
 
 See [LICENSE](LICENSE) for complete terms.
 
+___
+
 ## 👨‍💻 Author
 
 <p align="center">
@@ -144,6 +153,8 @@ See [LICENSE](LICENSE) for complete terms.
 </p>
 <h3 align="center">Ximanta Bhuyan</h3>
 
+___
+
 ## 🌐 Deployment
 
 The project is configured for deployment on **Netlify**:
@@ -153,6 +164,8 @@ The project is configured for deployment on **Netlify**:
 3. Deploy with default settings
 
 No build command required – deploy as static files.
+
+___
 
 ## 🤝 Contributing
 
