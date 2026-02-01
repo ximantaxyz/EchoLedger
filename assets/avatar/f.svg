@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="avatarBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FF00FF"/>
+      <stop offset="100%" stop-color="#9900CC"/>
+    </radialGradient>
+    <linearGradient id="headGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#FF4DFF"/>
+      <stop offset="60%" stop-color="#CC00FF"/>
+      <stop offset="100%" stop-color="#9900CC"/>
+    </linearGradient>
+    <linearGradient id="shoulderGradient" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#CC00FF"/>
+      <stop offset="100%" stop-color="#660099"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="softShadow">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="rgba(102, 0, 153, 0.3)"/>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="512" cy="512" r="500" fill="url(#avatarBg)" opacity="0.95" filter="url(#softShadow)"/>
+  
+  <!-- Main silhouette group with glow -->
+  <g filter="url(#glow)">
+    <!-- Head with softer oval -->
+    <ellipse cx="512" cy="350" rx="160" ry="190" fill="url(#headGradient)"/>
+    
+    <!-- Shoulders with graceful curve -->
+    <path d="M342 450 
+             Q512 520 682 450 
+             L682 620 
+             Q512 700 342 620 
+             Z" 
+          fill="url(#shoulderGradient)"/>
+    
+    <!-- Neck -->
+    <rect x="472" y="450" width="80" height="50" rx="15" fill="url(#headGradient)"/>
+  </g>
+  
+  <!-- Depth details -->
+  <!-- Head highlight -->
+  <ellipse cx="512" cy="300" rx="110" ry="50" fill="rgba(255, 255, 255, 0.15)" opacity="0.7"/>
+  
+  <!-- Shoulder curve highlights -->
+  <path d="M420 480 Q512 530 604 480" stroke="rgba(255, 255, 255, 0.2)" stroke-width="12" stroke-linecap="round" fill="none"/>
+  
+  <!-- Rim lighting -->
+  <ellipse cx="512" cy="350" rx="165" ry="195" fill="none" stroke="rgba(255, 102, 255, 0.3)" stroke-width="2"/>
+  <path d="M352 460 Q512 540 672 460" stroke="rgba(255, 102, 255, 0.3)" stroke-width="2" fill="none"/>
+  
+  <!-- Geometric detail elements -->
+  <!-- Subtle tech pattern -->
+  <g opacity="0.4">
+    <circle cx="462" y="520" r="8" fill="#FF66FF"/>
+    <circle cx="512" y="520" r="8" fill="#FF66FF"/>
+    <circle cx="562" y="520" r="8" fill="#FF66FF"/>
+    <line x1="462" y1="540" x2="462" y2="580" stroke="#FF66FF" stroke-width="6" stroke-linecap="round"/>
+    <line x1="512" y1="540" x2="512" y2="580" stroke="#FF66FF" stroke-width="6" stroke-linecap="round"/>
+    <line x1="562" y1="540" x2="562" y2="580" stroke="#FF66FF" stroke-width="6" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Abstract feature area -->
+  <g opacity="0.8">
+    <ellipse cx="462" cy="330" rx="25" ry="6" fill="#330033"/>
+    <ellipse cx="562" cy="330" rx="25" ry="6" fill="#330033"/>
+  </g>
+  
+  <!-- Abstract mouth curve -->
+  <path d="M472 390 Q512 410 552 390" stroke="#330033" stroke-width="6" stroke-linecap="round" fill="none"/>
+  
+  <!-- Outer border -->
+  <circle cx="512" cy="512" r="500" fill="none" stroke="rgba(153, 0, 204, 0.3)" stroke-width="2"/>
+</svg>
